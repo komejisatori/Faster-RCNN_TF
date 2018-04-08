@@ -1,6 +1,6 @@
 import tensorflow as tf
 from networks.network import Network
-
+import os
 
 #define
 
@@ -10,6 +10,7 @@ anchor_scales = [8, 16, 32]
 
 class VGGnet_train(Network):
     def __init__(self, trainable=True):
+        os.environ["CUDA_VISIBLE_DEVICES"] = "3"
         self.inputs = []
         self.data = tf.placeholder(tf.float32, shape=[None, None, None, 3])
         self.im_info = tf.placeholder(tf.float32, shape=[None, 3])
